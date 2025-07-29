@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>موقع إخباري احترافي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        body {
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+            background-color: #f4f4f4;
+            color: #000;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #222;
+            color: white;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .toggle-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background-color: #f90;
+            color: #000;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .toggle-btn:hover {
+            background-color: #e68a00;
+        }
+        main {
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .news-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .news-box {
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .news-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .news-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #f90;
+            margin-left: 1rem;
+        }
+        .news-meta {
+            font-size: 0.85rem;
+            color: #888;
+        }
+        .news-box a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            flex: 1;
+        }
+        .news-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .share-buttons a {
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .share-buttons .facebook { background-color: #3b5998; }
+        .share-buttons .twitter { background-color: #1da1f2; }
+        .share-buttons .whatsapp { background-color: #25d366; }
+
+        .search-input {
+            margin-bottom: 1.5rem;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        body.dark {
+            background-color: #111;
+            color: white;
+        }
+        body.dark .news-box {
+            background-color: #1e1e1e;
+        }
+        body.dark .news-box a {
+            color: white;
+        }
+        body.dark header {
+            background-color: #111;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">⚡ شركة الأخبار</div>
+        <button class="toggle-btn" onclick="toggleMode()">الوضع الداكن / الفاتح</button>
+    </header>
+
+    <main>
+        <input type="text" class="search-input" id="searchInput" placeholder="ابحث في الأخبار...">
+        <div class="news-container" id="newsContainer">
+            <div class="news-box">
+                <img src="_103927852_f69f7775-6c14-48ef-95ba-546618d2c3de.jpg.webp" class="news-image" alt="صورة خبر">
+                <div class="news-title-row">
+                    <a href="#"><h2>تكنولوجيا الواقع الافتراضي تصل للمدارس</h2></a>
+                    <div class="news-number">7</div>
+                </div>
+                <div class="news-meta">نُشر في: 2025-07-28</div>
+                <div class="share-buttons">
+                    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="news-box">
+                <img src="create_news-intro-maker_lead.webp" class="news-image" alt="صورة خبر">
+                <div class="news-title-row">
+                    <a href="#"><h2>احتفالات كبرى باليوم الوطني</h2></a>
+                    <div class="news-number">6</div>
+                </div>
+                <div class="news-meta">نُشر في: 2025-07-27</div>
+                <div class="share-buttons">
+                    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="news-box">
+                <img src="_103941776_a9f6eae5-d398-45fd-8b84-81d4b80ff10b.jpg" class="news-image" alt="صورة خبر">
+                <div class="news-title-row">
+                    <a href="#"><h2>انطلاق القمة العربية في القاهرة</h2></a>
+                    <div class="news-number">5</div>
+                </div>
+                <div class="news-meta">نُشر في: 2025-07-29</div>
+                <div class="share-buttons">
+                    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="news-box">
+                <img src="_104950329_3.jpg.webp" class="news-image" alt="صورة خبر">
+                <div class="news-title-row">
+                    <a href="#"><h2>ارتفاع أسعار النفط بعد اضطرابات الشرق الأوسط</h2></a>
+                    <div class="news-number">4</div>
+                </div>
+                <div class="news-meta">نُشر في: 2025-07-26</div>
+                <div class="share-buttons">
+                    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="news-box">
+                <img src="images.jpg" class="news-image" alt="صورة خبر">
+                <div class="news-title-row">
+                    <a href="#"><h2>مقتل 22 شخص من غزه</h2></a>
+                    <div class="news-number">3</div>
+                </div>
+                <div class="news-meta">نُشر في: 2025-07-25</div>
+                <div class="share-buttons">
+                    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="news-box">
+                <img src="64897ab197252c20f85fb644_6489756ab7a00eb374fd2ae4_breaking20video.jpeg" class="news-image" alt="صورة خبر">
+                <div class="news-title-row">
+                    <a href="#"><h2>فوز الأهلي بكأس السوبر المصري</h2></a>
+                    <div class="news-number">2</div>
+                </div>
+                <div class="news-meta">نُشر في: 2025-07-24</div>
+                <div class="share-buttons">
+                    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="news-box">
+                <img src="63da3362f67ed63fc194932d_manual-3.jpeg" class="news-image" alt="صورة خبر">
+                <div class="news-title-row">
+                    <a href="#"><h2>طقس غائم وانخفاض في درجات الحرارة غدًا</h2></a>
+                    <div class="news-number">1</div>
+                </div>
+                <div class="news-meta">نُشر في: 2025-07-23</div>
+                <div class="share-buttons">
+                    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleMode() {
+            document.body.classList.toggle('dark');
+        }
+              const searchInput = document.getElementById("searchInput");
+        const newsItems = document.querySelectorAll(".news-box");
+
+        searchInput.addEventListener("input", function () {
+            const query = this.value.toLowerCase();
+            newsItems.forEach(item => {
+                const title = item.querySelector("h2").textContent.toLowerCase();
+                item.style.display = title.includes(query) ? "block" : "none";
+            });
+        });
+    </script>
+</body>
+</html>
